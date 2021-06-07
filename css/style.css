@@ -1,0 +1,106 @@
+
+/* علشان معندناش دلوقتي اي فريم ورك او اي حاجة بتعمل نورماليز للصفحة فهنعمل البوكس سيزينج لكل العناصر كالتالي*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Tahoma, Arial;
+}
+
+.slider-container {
+    margin: 10px auto;
+    width: 800px;   /* علي قد حجم الصور  */
+    height: 250px;  /* علي قد حجم الصور */
+    position: relative;
+    /* overflow: hidden;   ممكن تعمل كدا لو هتجيب صور اكبر و انت مش عاوزها تبوظ التنسيق */
+}
+
+.slider-container img {
+    position: absolute;
+    opacity: 0;         /* welsatr da bardo alshan ta5fe el anaser ally mesh wa5da class active */    /* لسطر دا و اللي بعدو علشان لما انتقل من صورة للتانية يكون في تاثير بسيط و ظريف بدل ما يتنقل مباشرتا كدا علي طول */
+    transition: opacity 1s;  /* alshan awel ma a3mel relod aw refresh elsewar t5tefy braha keda we fe taser 7elw we kman alshan lama atnakel men sola le eltanya ybka fe tatser 7elw */
+    z-index: 1;  /* الصورة هتكون الطبقة طبعا رقم واحد و السليدر اللي هيكون فية رقم الصورة الحالية هيكونواخد زد اندسكس اتنين علشان يظهر فوق الصورة */
+}
+
+/* اللي هتاخد كلاس اكتيف هيكون الاوباسيتي بتاعها واحد يعني هتبقي ليست شفافة فهتظهر و الباقي مش هيظهر لان الاوباسيتي بتاع الباقي صفر */
+.slider-container img.active {  
+    opacity: 1;
+}
+
+.slider-container .slider-number {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: rgba(0,0,0,.6); /* ريد جرين بلو الفا */
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 20px;
+    z-index: 2;
+    border-radius: 6px;
+}
+
+.slider-controls {
+    width: 800px;  /* mmken kont fe el html te3mel div byshel gwah div elcontainer we div elcontrols we tdy lldiv elly hate3melo da width  */ /* نفس ويدث الكونتينر اللي فية الصور */
+    margin: auto;
+    overflow: hidden;   /* ممكن نديلو اوفر فلو هيدين علشان الفلوت او ممكن نديلو طول معين عادي برضو  */
+}
+
+.slider-controls .prev,
+.slider-controls .next {
+    background-color: #009688;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 5px;
+    user-select: none;  /* alashan mahedesh yekdar ye3mel select alay */
+    width: 20%;
+}
+
+.slider-controls .prev {
+    float: left;
+}
+
+.slider-controls .next {
+    float: right;
+}
+
+/* لو الكلاس دا اتحط علي النيكس او البريبف هيتعمل فية التانسيقات دي لان الكلاس دا هيتحط في حالة انك و صلت لاخر صورة او اخر سليدر */
+.slider-controls .prev.disabled,
+.slider-controls .next.disabled {
+    background-color: rgba(0,150,136,.5);
+    cursor: no-drop;  /* علشان يدي علامة ممنوع تدوس هنا */
+}
+
+.slider-controls .indicators {
+    width: 60%;
+    float: left;
+}
+
+.slider-controls .indicators ul {
+    list-style: none;
+    margin: 0;
+    text-align: center;
+}
+
+.slider-controls .indicators ul li {
+    display: inline-block;  /* علشان تيجي جنب بعضها */
+    background-color: #f6f6f6;
+    color: #333;
+    font-weight: bold;
+    height: 28px;
+    width: 28px;
+    border-radius: 4px;
+    margin: 0 2px;
+    line-height: 28px;
+    cursor: pointer;
+}
+
+.slider-controls .indicators ul li.active {
+    background-color: #009688;
+    color: #FFF;
+}
